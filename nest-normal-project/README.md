@@ -12,9 +12,10 @@ npm install
 npm run dev
 ```
 
-## Production
+## Build
 
 ```bash
+# install ncc
 npm i -g @vercel/ncc
 
 npm run build
@@ -22,10 +23,23 @@ npm run build
 
 ## Server
 
-```bash
-npm i -g pm2
+1. <b>Build Zip</b>
 
-pm2 start
+```bash
+npm run build:prod
+```
+2. <b>Unzip In Server</b>
+
+```bash
+unzip nest-normal-project.zip -d nest-normal-project
+```
+3. <b>PM2</b>
+
+```bash
+# install pm2
+npm i -g pm2
+# In nest-normal-project
+cd nest-normal-project && pm2 start
 ```
 
 ## Support
