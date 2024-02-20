@@ -8,7 +8,7 @@ module.exports = {
       name: appConfig.NEST_APP_NAME,
       exec_mode: 'cluster',
       instances: 1, // 开启几个进程
-      script: './dist/index.js',
+      script: './dist/main.js',
       log_date_format: 'YYYY-MM-DD HH:mm:ss',
       env: {
         ...appConfig,

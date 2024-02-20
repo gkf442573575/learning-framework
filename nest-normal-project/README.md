@@ -15,8 +15,8 @@ npm run dev
 ## Build
 
 ```bash
-# install ncc
-npm i -g @vercel/ncc
+# # install ncc
+# npm i -g @vercel/ncc 不使用ncc部分功能不行
 
 npm run build
 ```
@@ -38,8 +38,13 @@ unzip nest-normal-project.zip -d nest-normal-project
 ```bash
 # install pm2
 npm i -g pm2
+
 # In nest-normal-project
-cd nest-normal-project && pm2 start
+cd nest-normal-project
+# Install
+npm install
+# Start
+pm2 start
 ```
 
 ## Support
@@ -48,7 +53,7 @@ cd nest-normal-project && pm2 start
 
 [PM2](https://pm2.fenxianglu.cn/)
 
-[Ncc](https://github.com/vercel/ncc#readme)
+<!-- [Ncc](https://github.com/vercel/ncc#readme) -->
 
 ## Material Icon
 
