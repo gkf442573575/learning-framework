@@ -17,7 +17,7 @@ import { ValidationPipe } from './pipes/validation.pipe';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    cors: true,
+    cors: true, // 是否允许跨域请求
     bodyParser: true,
     logger: ['warn', 'error', 'log'],
   });
@@ -49,14 +49,11 @@ async function bootstrap() {
   );
   // 接口文档
   const options = new DocumentBuilder()
-    .addBearerAuth(
-      {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-      },
-      'Authorization',
-    )
+    .addSecurity('Auth', {
+      type: 'apiKey',
+      in: 'header',
+      name: 'authorization',
+    })
     .setTitle('NestApp')
     .setDescription('接口API')
     .setVersion('1.0.0')

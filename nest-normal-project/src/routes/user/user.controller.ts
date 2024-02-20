@@ -7,7 +7,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags, ApiSecurity } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
 import { UserService } from './user.service';
@@ -40,7 +40,7 @@ export class UserController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @ApiBearerAuth('Authorization')
+  @ApiSecurity('Auth')
   @Put('/update/pwd')
   async updatePwd(
     @Body() body: UpdateUserPwdDto,
