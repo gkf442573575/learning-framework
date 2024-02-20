@@ -51,8 +51,8 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .addSecurity('Auth', {
       type: 'apiKey',
-      in: 'header',
-      name: 'authorization',
+      in: 'header', // 使用header认证
+      name: 'Authorization',
     })
     .setTitle('NestApp')
     .setDescription('接口API')
@@ -61,7 +61,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/api-docs', app, document);
   // 服务启动
-  await app.listen(process.env.NEST_APP_PORT, '0.0.0.0', async () => {
+  await app.listen(process.env.NEST_APP_PORT || 3000, '0.0.0.0', async () => {
     console.log(`Server started at ${await app.getUrl()}`);
   });
 }

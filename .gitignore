@@ -47,3 +47,5 @@ package-lock.json
 docbuild/
 
 vite.config.ts.timestamp-*.mjs
+
+nest-normal-project/app.config.js

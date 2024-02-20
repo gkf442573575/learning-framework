@@ -11,9 +11,13 @@ import { JwtStrategy } from './jwt.strategy';
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
-    JwtModule.register({
-      secret: 'NEST_APP_TEST_JWT_SECRET',
-      signOptions: { expiresIn: '8h' }, // token 过期时效
+    JwtModule.registerAsync({
+      useFactory: () => ({
+        secret: process.env.NEST_APP_JWT_SECRET || 'NEST_APP_TEST_JWT_SECRET',
+        signOptions: {
+          expiresIn: '8h',
+        },
+      }),
     }),
     UserModule,
   ],

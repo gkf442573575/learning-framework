@@ -6,9 +6,10 @@ import { Injectable } from '@nestjs/common';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
     super({
-      jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+      jwtFromRequest: ExtractJwt.fromHeader('Authorization'.toLowerCase()), // 这里只能小写
       ignoreExpiration: false,
-      secretOrKey: 'NEST_APP_TEST_JWT_SECRET',
+      secretOrKey:
+        process.env.NEST_APP_JWT_SECRET || 'NEST_APP_TEST_JWT_SECRET',
     });
   }
 
