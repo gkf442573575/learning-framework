@@ -7,7 +7,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiSecurity } from '@nestjs/swagger';
+import { ApiTags, ApiSecurity, ApiOperation } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
 import { UserService } from './user.service';
@@ -34,6 +34,7 @@ export class UserController {
     return await this.userService.register(body);
   }
 
+  @ApiOperation({ summary: '用户登录' })
   @Post('/login')
   async login(@Body() body: LoginDto) {
     return await this.authService.validateUser(body.name, body.password);

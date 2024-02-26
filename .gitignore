@@ -49,7 +49,7 @@ docbuild/
 vite.config.ts.timestamp-*.mjs
 
 nest-normal-project/app.config.js
-
+nest-normal-project/docs
 
 *.zip
 *.rar
