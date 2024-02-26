@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "npm run start:dev",
-    "docs": "npx @compodoc/compodoc -p tsconfig.json -d docs -r 9999 -s -w",
-    "docs:build": "npx @compodoc/compodoc -p tsconfig.json -d docs",
+    "docs": "npm run docs:build -- --port 9999 --serve --watch --open",
+    "docs:build": "npx @compodoc/compodoc -p tsconfig.json --language zh-CN",
     "clear": "rimraf dist nest-normal-project.zip",
     "build": "npm run clear && nest build && rimraf dist/tsconfig.build.tsbuildinfo && npm run build:config",
     "build:config": "node scripts/build-env.js && prettier --write app.config.js",
@@ -105,5 +105,13 @@
   },
   "_moduleDirectories": [
     "node_modules_custom"
-  ]
+  ],
+  "compodoc": {
+    "name": "NestJs模板项目",
+    "output": "docs",
+    "theme": "material",
+    "hideGenerator": true,
+    "disableCoverage": true,
+    "disableSourceCode": true
+  }
 }
