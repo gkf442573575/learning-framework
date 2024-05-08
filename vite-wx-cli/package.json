@@ -1,0 +1,32 @@
+{
+  "name": "vite-wx-cli",
+  "version": "0.0.0",
+  "description": "企业微信内web应用开发脚手架",
+  "main": "bin/index.js",
+  "bin": {
+    "dgov-wx": "bin/index.js"
+  },
+  "scripts": {
+    "bump": "bumpp package.json && npm publish"
+  },
+  "keywords": [
+    "wx",
+    "vite",
+    "vue3"
+  ],
+  "author": "gkf442573575@163.com",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "fs-extra": "^11.1.1",
+    "minimist": "^1.2.8",
+    "ora": "^5.3.0",
+    "prompts": "^2.4.2",
+    "rimraf": "^5.0.1",
+    "validate-npm-package-name": "^5.0.0"
+  },
+  "devDependencies": {
+    "bumpp": "^9.1.1"
+  }
+}
