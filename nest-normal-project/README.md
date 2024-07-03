@@ -15,9 +15,6 @@ npm run dev
 ## Build
 
 ```bash
-# # install ncc
-# npm i -g @vercel/ncc 不使用ncc部分功能不行
-
 npm run build
 ```
 
