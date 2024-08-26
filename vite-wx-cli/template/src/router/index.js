@@ -55,7 +55,6 @@ router.beforeEach(async (to, from, next) => {
         next()
       }
     } else {
-      // FIXME:进行登录
       authStore.authLogin(to.fullPath)
     }
   }

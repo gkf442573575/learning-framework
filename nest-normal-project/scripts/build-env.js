@@ -1,20 +1,21 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path');
-const fs = require('fs');
+const { resolve, join } = require('path');
+const { writeFileSync } = require('fs');
 
-const dotenv = require('dotenv');
+const { config } = require('dotenv');
 
 const envBuild = () => {
-  const appDir = fs.realpathSync(process.cwd());
+  const root_path = process.cwd();
 
-  const envPath = path.join(appDir, '.env');
+  const env_config = config({
+    path: [resolve(root_path, '.env.production'), resolve(root_path, '.env')],
+  });
 
-  const envConfig = dotenv.parse(fs.readFileSync(envPath));
-
-  const data = `module.exports = ${JSON.stringify(envConfig, null, 2)}`;
-
-  // 生成app.config.js
-  fs.writeFileSync(path.join(appDir, `app.config.js`), data, 'utf-8');
+  console.log('env_config >>>', env_config.parsed);
+  if (env_config.parsed) {
+    const data = `module.exports = ${JSON.stringify(env_config, null, 2)}`;
+    writeFileSync(join(root_path, `app.config.js`), data, 'utf-8');
+  }
 };
 
 envBuild();
