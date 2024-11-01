@@ -20,7 +20,7 @@ const fomateDate = () => {
 }
 
 defineOptions({
-  name: 'lib-button'
+  name: 'LibButton'
 })
 </script>
 

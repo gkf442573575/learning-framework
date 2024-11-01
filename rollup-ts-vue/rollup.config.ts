@@ -25,7 +25,7 @@ import pkg from './package.json' assert { type: 'json' }
 import path from 'path'
 
 // FIXME: 请修改此参数，写组件名称
-const PKG_NAME = 'lib-button' || pkg.name
+const PKG_NAME = pkg.name || 'LibButton'
 
 const banner = `/**
  * @package ${PKG_NAME}

@@ -1,11 +1,14 @@
 import type { App, Plugin } from 'vue'
 
-import Component from './index.vue'
+import LibButton from './index.vue'
 
-const ComponentPlugin: Plugin = {
+const LibButtonPlugin: Plugin = {
   install(app: App) {
-    app.component(Component.name, Component)
+    app.component(LibButton.name ||　'LibButton', LibButton)
   }
 }
 
-export default ComponentPlugin
+export type LibButtonInstance = InstanceType<typeof LibButton>
+
+export default LibButtonPlugin
+

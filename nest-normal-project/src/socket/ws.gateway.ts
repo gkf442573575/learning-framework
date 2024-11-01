@@ -12,7 +12,7 @@ interface typeClient {
   source: string;
 }
 
-@WebSocketGateway()
+@WebSocketGateway(9090)
 export class WsGateway {
   // 链接
   private clientArr: typeClient[] = [];
@@ -30,40 +30,16 @@ export class WsGateway {
 
   // 处理链接成功
   async handleConnection(client: WebSocket, request: IncomingMessage) {
-    const client_id = uuidv4();
-    client['client_id'] = client_id;
-    this.clientMap.set(client_id, client);
-    this.clientArr.push({
-      client_id,
-      source: '',
-    });
+    console.log('链接成功');
     client.send(
       JSON.stringify({
-        type: 'server-client',
-        data: {
-          client_id,
-        },
+        data: 'success',
       }),
     );
   }
   // 链接消失
   handleDisconnect(client: WebSocket) {
-    if (
-      client &&
-      'client_id' in client &&
-      this.clientMap.has(client['client_id'])
-    ) {
-      // 移除链接
-      const clientId = client['client_id'];
-      this.clientMap.delete(clientId);
-      const clientIndex = this.clientArr.findIndex(
-        (item) => item.client_id === clientId,
-      );
-      if (clientIndex > -1) {
-        this.clientArr.splice(clientIndex, 1);
-        return;
-      }
-    }
+    client.close();
   }
 
   @SubscribeMessage('socket-heart')

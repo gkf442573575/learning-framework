@@ -1,0 +1,38 @@
+{
+  "name": "@dgov/portal-test",
+  "version": "0.0.2",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "rimraf dist && vite build",
+    "bump": "node scripts/bump.js"
+  },
+  "publishConfig": {
+    "registry": "http://10.110.1.216:4873/"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue2": "^2.3.1",
+    "bumpp": "^9.7.1",
+    "chalk": "^5.3.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^6.0.1",
+    "sass": "^1.80.4",
+    "sass-loader": "^16.0.2",
+    "vite": "^5.4.9"
+  },
+  "dependencies": {
+    "element-ui": "^2.15.14",
+    "vue": "^2.6.14"
+  }
+}

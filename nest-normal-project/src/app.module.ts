@@ -15,7 +15,7 @@ import * as dayjs from 'dayjs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { GlobalModule } from './global/global.module';
-// import { WsGateway } from './socket/ws.gateway';
+import { WsGateway } from './socket/ws.gateway';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -65,6 +65,6 @@ import { UserController } from './routes/user/user.controller';
     UserModule,
   ],
   controllers: [AppController, UserController],
-  providers: [AppService], // WsGateway
+  providers: [AppService, WsGateway], // WsGateway
 })
 export class AppModule {}

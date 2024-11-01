@@ -15,6 +15,8 @@ import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { ResponseInterceptor, ErrorsInterceptor } from './interceptors/index';
 import { ValidationPipe } from './pipes/validation.pipe';
 
+import { AppWsAdapter } from '@/socket/ws.adapter';
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: true, // 是否允许跨域请求
@@ -60,6 +62,9 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/api-docs', app, document);
+
+  // socket
+  app.useWebSocketAdapter(new AppWsAdapter(app));
   // 服务启动
   await app.listen(process.env.NEST_APP_PORT || 3000, '0.0.0.0', async () => {
     console.log(`Server started at ${await app.getUrl()}`);
